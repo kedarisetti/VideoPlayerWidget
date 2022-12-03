@@ -5,7 +5,27 @@
 [![codecov](https://codecov.io/gh/kedarisetti/VideoPlayerWidget/branch/master/graph/badge.svg)](https://codecov.io/gh/kedarisetti/VideoPlayerWidget)
 
 
-A Custom Jupyter Widget Library
+A Custom Jupyter Widget Library for playing Videos
+
+The widget allows the user to load a video, get and set the video's current time through code.
+
+```
+import VideoPlayerWidget
+
+#create a playable video object 
+v = VideoPlayerWidget.Video()
+
+#load a url
+vid = v.from_url(test_url)
+
+#get video's time with 
+vid.videoTime
+
+#set video's time with 
+vid.videoTime = 10
+```
+
+
 
 ## Installation
 
