@@ -177,12 +177,3 @@ class Video(DOMWidget):
     def __repr__(self):
         return self._get_repr(Video)
 
-    _event_dispatcher = ipywidgets.widget.CallbackDispatcher()
-
-    def on_timeupdate(self, callback):
-        self._event_dispatcher.register_callback(callback)
-
-    @traitlets.observe('videoTime')
-    def timUpdateEvent(self, change):
-        assert(change['name'] == 'videoTime')
-        self._event_dispatcher(change)
