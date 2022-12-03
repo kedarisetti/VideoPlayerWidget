@@ -101,8 +101,10 @@ export class VideoView extends DOMWidgetView {
     super.render();
     this.updated(); // Set defaults.
     this.el.addEventListener('timeupdate', () => {
-      this.onTrackedVideoFrame()});  
-  
+      this.onTrackedVideoFrame()}); 
+
+    this.model.on('change:videoTime', this.videoTime_changed, this);
+
   }
 
   updated(): void {
@@ -182,9 +184,6 @@ export class VideoView extends DOMWidgetView {
     return super.update();
   }
 
-
-
-
   remove(): void {
     if (this.el.src) {
       URL.revokeObjectURL(this.el.src);
@@ -192,11 +191,15 @@ export class VideoView extends DOMWidgetView {
     super.remove();
   }
 
+  videoTime_changed(){
+    console.log('------',this.model.get('videoTime'));
+    this.el.currentTime=this.model.get('videoTime');
+  }
 
   onTrackedVideoFrame(){
     this.model.set('videoTime', this.el.currentTime);
     this.touch();
-    console.log(this.model.attributes.videoTime)
+    console.log(this.el.currentTime, this.model.attributes.videoTime)
   }
   
   /**
