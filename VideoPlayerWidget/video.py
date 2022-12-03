@@ -4,11 +4,12 @@
 # Copyright (c) Dharanish Kedarisetti.
 # Distributed under the terms of the Modified BSD License.
 
-
+import mimetypes
 from ipywidgets import DOMWidget
 from traitlets import Unicode, CUnicode, Bool
 from ._frontend import module_name, module_version
-import traitlets, ipywidgets
+import traitlets
+import ipywidgets
 
 class ByteMemoryView(traitlets.TraitType):
     """A trait for memory views of bytes."""
@@ -39,7 +40,7 @@ class CByteMemoryView(ByteMemoryView):
         except Exception:
             self.error(obj, value)
 
-class VideoWidget(DOMWidget):
+class Video(DOMWidget):
 
     _model_name = Unicode('VideoModel').tag(sync=True)
     _model_module = Unicode(module_name).tag(sync=True)
@@ -52,14 +53,17 @@ class VideoWidget(DOMWidget):
     format = Unicode('mp4', help="The format of the video.").tag(sync=True)
     width = CUnicode(help="Width of the video in pixels.").tag(sync=True)
     height = CUnicode(help="Height of the video in pixels.").tag(sync=True)
-    autoplay = Bool(True, help="When true, the video starts when it's displayed").tag(sync=True)
-    loop = Bool(True, help="When true, the video will start from the beginning after finishing").tag(sync=True)
-    controls = Bool(True, help="Specifies that video controls should be displayed (such as a play/pause button etc)").tag(sync=True)
+    autoplay = Bool(
+        True, help="When true, the video starts when it's displayed").tag(sync=True)
+    loop = Bool(
+        True, help="When true, the video will start from the beginning after finishing").tag(sync=True)
+    controls = Bool(
+        True, help="Specifies that video controls should be displayed (such as a play/pause button etc)").tag(sync=True)
 
-    value = CByteMemoryView(help="The media data as a memory view of bytes.").tag(sync=True)
+    value = CByteMemoryView(
+        help="The media data as a memory view of bytes.").tag(sync=True)
 
     videoTime = traitlets.Float().tag(sync=True)
-
 
     @classmethod
     def _from_file(cls, tag, filename, **kwargs):
@@ -166,15 +170,13 @@ class VideoWidget(DOMWidget):
         signature = ', '.join(signature)
         return '{}({})'.format(class_name, signature)
 
-
     @classmethod
     def from_file(cls, filename, **kwargs):
         return cls._from_file('video', filename, **kwargs)
 
     def __repr__(self):
-        return self._get_repr(VideoWidget)
+        return self._get_repr(Video)
 
-    
     _event_dispatcher = ipywidgets.widget.CallbackDispatcher()
 
     def on_timeupdate(self, callback):
@@ -184,4 +186,3 @@ class VideoWidget(DOMWidget):
     def timUpdateEvent(self, change):
         assert(change['name'] == 'videoTime')
         self._event_dispatcher(change)
-
