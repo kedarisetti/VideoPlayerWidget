@@ -1,5 +1,5 @@
 {
-  "name": "VideoPlayerWidget",
+  "name": "videoplayerwidget",
   "version": "0.1.0",
   "description": "A Custom Jupyter Widget Library",
   "keywords": [
@@ -20,7 +20,7 @@
   "license": "BSD-3-Clause",
   "author": {
     "name": "Dharanish Kedarisetti",
-    "email": "dsetti@protonmail.com"
+    "email": "dsetti@proton.me"
   },
   "main": "lib/index.js",
   "types": "./lib/index.d.ts",
