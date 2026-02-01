@@ -22,7 +22,7 @@ from setuptools import setup
 name = 'VideoPlayerWidget'
 
 # Ensure a valid python version
-ensure_python('>=3.4')
+ensure_python('>=3.10')
 
 # Get our version
 version = get_version(pjoin(name, '_version.py'))
@@ -70,6 +70,7 @@ setup_args = dict(
     author_email    = 'dsetti@proton.me',
     url             = 'https://github.com/kedarisetti/VideoPlayerWidget',
     license         = 'BSD',
+    python_requires = '>=3.10',
     platforms       = "Linux, Mac OS X, Windows",
     keywords        = ['Jupyter', 'Widgets', 'IPython'],
     classifiers     = [
@@ -78,10 +79,10 @@ setup_args = dict(
         'License :: OSI Approved :: BSD License',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
+        'Programming Language :: Python :: 3.13',
         'Framework :: Jupyter',
     ],
     include_package_data = True,

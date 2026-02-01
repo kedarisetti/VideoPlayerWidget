@@ -25,6 +25,13 @@ vid.videoTime
 vid.videoTime = 10
 ```
 
+WebGL rendering is enabled by default to improve playback smoothness in Chrome and Firefox. The widget decodes video with a hidden `<video>` element and draws frames into a WebGL `<canvas>`, with a built-in custom control bar. If WebGL is unavailable (or disabled), it falls back to the native video element controls.
+
+```
+# disable WebGL rendering if you want native video controls
+v = VideoPlayerWidget.Video(useWebGL=False)
+```
+
 
 
 ## Installation

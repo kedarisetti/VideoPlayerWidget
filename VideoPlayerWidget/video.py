@@ -59,6 +59,8 @@ class Video(DOMWidget):
         True, help="When true, the video will start from the beginning after finishing").tag(sync=True)
     controls = Bool(
         True, help="Specifies that video controls should be displayed (such as a play/pause button etc)").tag(sync=True)
+    useWebGL = Bool(
+        True, help="Render video frames via WebGL canvas when available.").tag(sync=True)
 
     value = CByteMemoryView(
         help="The media data as a memory view of bytes.").tag(sync=True)
@@ -176,4 +178,3 @@ class Video(DOMWidget):
 
     def __repr__(self):
         return self._get_repr(Video)
-

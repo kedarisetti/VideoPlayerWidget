@@ -8,6 +8,6 @@ def _jupyter_nbextension_paths():
     return [{
         'section': 'notebook',
         'src': 'nbextension/static',
-        'dest': 'VideoPlayerWidget',
-        'require': 'VideoPlayerWidget/extension'
+        'dest': 'videoplayerwidget',
+        'require': 'videoplayerwidget/extension'
     }]
